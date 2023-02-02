@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home page
+{% endblock %}
+
+{% block content %}
+<main>   
+<div class="container">
+    <h1>Welcome</h1>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for el in data %}
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{el.title}}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{el.price}}<small class="text-muted fw-light"> $</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li><img src="static/uploads/{{el.photo}}" height="150"></li>
+              <li>{{ range(2, 22) | random }} users now watching this order</li>
+            </ul>
+            <a href="/buy/{{ el.id }}" class="w-100 btn btn-lg btn-outline-primary">Buy it now</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+  </main>
+{% endblock %}
